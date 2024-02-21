@@ -11,5 +11,5 @@ import { NavigationComponent } from "./components/navigation/navigation.componen
     imports: [CommonModule, RouterOutlet, NavigationComponent]
 })
 export class AppComponent {
-  title = 'bci-challenge';
+  title = 'api-basketball';
 }
