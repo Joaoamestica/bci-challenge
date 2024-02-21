@@ -1,3 +1,24 @@
 .full-width-table {
   width: 100%;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.button-container  {
+  margin-bottom: 10px;
+}
+
+.button-container mat-form-field {
+  margin-right: 16px;
+}
+
+table {
+  width: 100%;
+}
