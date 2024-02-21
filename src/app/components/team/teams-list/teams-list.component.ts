@@ -12,6 +12,7 @@ import { DeleteTeamComponent } from '../modals/delete-team/delete-team.component
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { Team } from '../../../models/team';
 
 @Component({
   selector: 'app-teams-list',
@@ -100,7 +101,7 @@ export class TeamsListComponent implements AfterViewInit, OnInit {
     });
   }
 
-  editTeam(team : any){
+  editTeam(team : Team){
     let index = this.dataSource.data.findIndex(data => data.id === team.id)
     if (index >= 0) {
       this.dataSource.data[index].name = team.name;
@@ -122,7 +123,7 @@ export class TeamsListComponent implements AfterViewInit, OnInit {
     });
   }
 
-  addTeam(team : any) {
+  addTeam(team : Team) {
     let lastId = (this.dataSource.data[this.dataSource.data.length -1]).id;
     team.id = lastId + 1;
     this.dataSource.data.push(team);
