@@ -19,10 +19,16 @@ export class DeleteTeamComponent implements OnInit{
     private deleteTeamComponent : MatDialogRef<DeleteTeamComponent>
   ){ }
 
+  /**
+   * Initializes the add team form with fields and validation rules.
+   */
   ngOnInit(): void {
     this.nameTeam = this.data.name;
   }
   
+  /**
+   * Closes the confirm delete dialog and triggers the team deletion process.
+   */
   confirmDeleteTeam() {
     this.deleteTeamComponent.close({close: true})
   }

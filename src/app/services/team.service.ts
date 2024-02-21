@@ -9,6 +9,10 @@ export class TeamService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Retrieves all teams available from the API.
+   * @returns An observable containing an array of team objects, or an error if the request fails.
+   */
   findAll()
   {
     let headers = new HttpHeaders(

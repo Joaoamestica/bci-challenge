@@ -21,6 +21,9 @@ export class AddTeamComponent {
     private addTeamComponent : MatDialogRef<AddTeamComponent>
   ){ }
 
+  /**
+   * Initializes the add team form with fields and validation rules.
+   */
   ngOnInit(): void {
     this.addTeamForm = this.fb.group({
       id: [''],
@@ -31,6 +34,9 @@ export class AddTeamComponent {
     });
   }
 
+  /**
+   * Submits the add team form data and closes the modal.
+   */
   onFormSubmit(){
     this.addTeamComponent.close({data: this.addTeamForm, close: true})
   }

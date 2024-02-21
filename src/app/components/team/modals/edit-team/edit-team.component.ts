@@ -22,6 +22,9 @@ export class EditTeamComponent {
     private editTeamComponent : MatDialogRef<EditTeamComponent>
   ) { }
 
+  /**
+   * Initializes the add team form with fields and validation rules.
+   */
   ngOnInit(): void {
     this.editTeamForm = this.fb.group({
       id: ['', [Validators.required]],
@@ -33,6 +36,9 @@ export class EditTeamComponent {
     this.loadData();
   }
 
+  /**
+   * Loads the team data into the edit form.
+   */
   loadData(){
     this.editTeamForm.get('id')?.setValue(this.data.id);
     this.editTeamForm.get('name')?.setValue(this.data.name);
@@ -41,6 +47,9 @@ export class EditTeamComponent {
     this.editTeamForm.get('city')?.setValue(this.data.city);
   }
 
+  /**
+   * Submits the edited team data and closes the modal.
+   */
   onFormSubmit(){
     this.editTeamComponent.close({data: this.editTeamForm, close: true})
   }

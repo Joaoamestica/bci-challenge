@@ -42,15 +42,23 @@ export class TeamsListComponent implements AfterViewInit, OnInit {
     private dialog: MatDialog
   ) { }
 
+  /**
+   * Initialize the columns to be displayed in the table.
+   */
   ngOnInit(): void {
     this.displayedColumns = ['id', 'name', 'nickname', 'code', 'city', 'action'];
   }
 
+  /**
+   * Load the teams after the view has been initialized.
+   */
   ngAfterViewInit(): void {
     this.findAllTeam();
   }
 
-
+  /**
+   * Get list of teams.
+   */
   findAllTeam(): void{
     this.teamService.findAll().subscribe({
       next: (response: any) => {  
@@ -65,6 +73,10 @@ export class TeamsListComponent implements AfterViewInit, OnInit {
     })
   }
 
+  /**
+   * Open modal to delete a team.
+   * @param row 
+   */
   openDeleteTeam(row : any){
     const dialogRef = this.dialog.open(DeleteTeamComponent, {
       data: row,
@@ -79,6 +91,10 @@ export class TeamsListComponent implements AfterViewInit, OnInit {
     });
   }
 
+  /**
+   * Delete a team.
+   * @param row 
+   */
   deleteTeam(row: any) {
     const index = this.dataSource.data.indexOf(row, 0);
     if (index > -1) {
@@ -87,6 +103,10 @@ export class TeamsListComponent implements AfterViewInit, OnInit {
     this.dataSource.data = this.dataSource.data;
   }
 
+  /**
+   * Open modal to edit a team.
+   * @param row 
+   */
   openEditTeam(row: any) {
     const dialogRef = this.dialog.open(EditTeamComponent, {
       data: row,
@@ -101,6 +121,10 @@ export class TeamsListComponent implements AfterViewInit, OnInit {
     });
   }
 
+  /**
+   * Edit a team.
+   * @param team 
+   */
   editTeam(team : Team){
     let index = this.dataSource.data.findIndex(data => data.id === team.id)
     if (index >= 0) {
@@ -111,6 +135,9 @@ export class TeamsListComponent implements AfterViewInit, OnInit {
     }
   }
 
+  /**
+   * Open modal to add a team.
+   */
   openAddTeam() {
     const dialogRef = this.dialog.open(AddTeamComponent);
 
@@ -123,6 +150,10 @@ export class TeamsListComponent implements AfterViewInit, OnInit {
     });
   }
 
+  /**
+   * Add a team.
+   * @param team 
+   */
   addTeam(team : Team) {
     let lastId = (this.dataSource.data[this.dataSource.data.length -1]).id;
     team.id = lastId + 1;
@@ -130,6 +161,10 @@ export class TeamsListComponent implements AfterViewInit, OnInit {
     this.dataSource.data = this.dataSource.data;
   }
 
+  /**
+   * Filters table data based on search term.
+   * @param event 
+   */
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
